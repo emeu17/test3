@@ -67,8 +67,6 @@ describe('auth', () => {
                 db.run("COMMIT;");
             });
 
-            console.log("running DB");
-
             // Close the DB connection
             db.close(err => {
                 if (err) {
