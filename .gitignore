@@ -1,0 +1,9 @@
+# Dependency directories
+node_modules/
+
+# nyc test coverage
+.nyc_output
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov

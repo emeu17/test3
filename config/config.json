@@ -1,0 +1,9 @@
+{
+    "apikey": "90301a26-894c-49eb-826d-ae0c2b22a405",
+    "jwt_secret": "gu6OPlxRAZM9B0XtRz9uQBo9RV5Tae5BNGW5wJ4kEN9nAqCJ8Sv0lfF3LE7L8Tu",
+    "staff_jwt_secret": "zJegsSFEbCrdoGsZwFViWn7YQCloLGfO4TZQAhKIETL1G0TkIxVwyn5fsGE6sD6",
+    "test_script": "test/script/ddl_test_220102.sql",
+    "interval": 10,
+    "simulation": true,
+    "nr_of_bikes": 1000
+}
