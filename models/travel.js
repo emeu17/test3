@@ -76,7 +76,7 @@ const travel = {
         //add bikeid as params
         req.params.bikeid = req.body.bikeid;
         //done in order to use rentBike-function as-is
-        travel.rentBike(res, req);
+        return travel.rentBike(res, req);
     },
     /*
         rent a bike,
@@ -581,7 +581,7 @@ const travel = {
         if (bike.end_station > 0) {
             //if customer has retrieved a bike outside of a station
             if (bike.start_station < 0) {
-                console.log("retrieving bike outside of station");
+                // console.log("retrieving bike outside of station");
                 price -= startFeeDecrease;
             }
             // if customer gets and retrieves at station

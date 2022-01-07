@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000",
     "posttest": "npm run eslint",
+    "scrutinizer-test": "nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000",
     "start": "node app.js",
     "start_edit": "nodemon app.js",
     "eslint": "eslint .",
