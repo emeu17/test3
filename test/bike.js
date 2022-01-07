@@ -9,10 +9,9 @@ process.env.NODE_ENV = 'test';
 //Require the dev-dependencies
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const fs = require('fs');
+const emptyDB = require("./emptyDB.js");
 
 const server = require('../app.js');
-const database = require("../db/database.js");
 
 chai.should();
 
@@ -27,55 +26,10 @@ try {
 }
 
 const apiKey = process.env.API_KEY || config.apikey;
-const testScript = process.env.TEST_SCRIPT || config.test_script;
 
 describe('bike', () => {
     before(() => {
-        return new Promise((resolve) => {
-            let db;
-
-            db = database.getDb();
-
-            const dataSql = fs.readFileSync(testScript).toString();
-
-            // Convert the SQL string to array to run one at a time.
-            const dataArr = dataSql.toString().split(";");
-
-            //last row is empty, creates a last "empty" ('\n')-element
-            dataArr.splice(-1);
-
-            // db.serialize ensures that queries are one after the other
-            //depending on which one came first in your `dataArr`
-            db.serialize(() => {
-                // db.run runs your SQL query against the DB
-                db.run("BEGIN TRANSACTION;");
-                // Loop through the `dataArr` and db.run each query
-                dataArr.forEach(query => {
-                    if (query) {
-                        // Add the delimiter back to each query
-                        //before you run them
-                        query += ";";
-                        db.run(query, err => {
-                            if (err) {
-                                throw err;
-                            }
-                        });
-                    }
-                });
-                db.run("COMMIT;");
-            });
-
-            console.log("running DB");
-
-            // Close the DB connection
-            db.close(err => {
-                if (err) {
-                    return console.error(err.message);
-                }
-                resolve();
-                // console.log("Closed the database connection.");
-            });
-        });
+        emptyDB.resetDB();
     });
 
     //get info about a specific bike
