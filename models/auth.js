@@ -353,14 +353,14 @@ const auth = {
                             }
                         });
                     }
-                    return res.status(201).json({
-                        data: {
-                            type: "success",
-                            message: "User created",
-                            user: data.email,
-                            id: this.lastID
-                        }
-                    });
+                });
+                return res.status(201).json({
+                    data: {
+                        type: "success",
+                        message: "User created",
+                        user: data.email,
+                        id: this.lastID
+                    }
                 });
             });
         });
