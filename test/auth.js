@@ -1,7 +1,7 @@
 /* global it describe before */
 
 /**
- testing of city-routes
+ testing of auth-routes
 */
 
 process.env.NODE_ENV = 'test';
